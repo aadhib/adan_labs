@@ -201,8 +201,8 @@ const sections: LegalSection[] = [
           items={[
             <>
               Email:{" "}
-              <a href="mailto:contact@adanlabs.com" className={mailLink}>
-                contact@adanlabs.com
+              <a href="mailto:info@adanlabs.com" className={mailLink}>
+                info@adanlabs.com
               </a>
             </>,
             <>

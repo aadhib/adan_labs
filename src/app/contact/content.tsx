@@ -218,13 +218,13 @@ export function ContactContent() {
                     <div className="flex items-center gap-4">
                       <Mail aria-hidden="true" className="h-5 w-5 shrink-0 text-accent" />
                       <span className="text-lg font-bold uppercase tracking-tight text-foreground">
-                        contact@adanlabs.ai
+                        info@adanlabs.com
                       </span>
                     </div>
                     <div className="flex items-center gap-4">
                       <MapPin aria-hidden="true" className="h-5 w-5 shrink-0 text-accent" />
                       <span className="text-lg font-bold uppercase tracking-tight text-foreground">
-                        San Francisco, CA
+                        47 Corrán Riada, Athlone, N37 X2K5, Ireland
                       </span>
                     </div>
                   </div>
@@ -239,7 +239,7 @@ export function ContactContent() {
                     custom solutions, reach out to our enterprise team directly.
                   </p>
                   <p className="mt-4 text-lg font-bold uppercase tracking-tight text-foreground">
-                    enterprise@adanlabs.ai
+                    enterprise@adanlabs.com
                   </p>
                 </div>
 
