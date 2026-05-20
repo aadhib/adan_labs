@@ -75,12 +75,18 @@ export function Footer() {
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground">
           &copy; {new Date().getFullYear()} Adan Labs — All rights reserved
         </p>
-        <div className="flex items-center gap-8">
+        <div className="flex items-center gap-6 sm:gap-8">
           <Link
             href="/privacy"
             className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-accent"
           >
             Privacy
+          </Link>
+          <Link
+            href="/cookies"
+            className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground transition-colors hover:text-accent"
+          >
+            Cookies
           </Link>
           <Link
             href="/terms"

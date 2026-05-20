@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { NoiseOverlay } from "@/components/ui/noise-overlay";
 import { MotionProvider } from "@/components/motion-provider";
+import { CookieConsent } from "@/components/cookie-consent";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -64,6 +65,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </MotionProvider>
+        <CookieConsent />
       </body>
     </html>
   );
