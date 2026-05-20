@@ -83,9 +83,8 @@ const sections: LegalSection[] = [
             storage, persists until you clear it.
           </>,
           <>
-            <Term>[ANALYTICS COOKIES]</Term> — analytics — set only if you
-            accept analytics cookies; provider, names, and durations will be
-            listed here once analytics is enabled.
+            No analytics, functional, or marketing cookies are currently set.
+            This list will be updated before any such cookies are introduced.
           </>,
         ]}
       />
@@ -168,8 +167,8 @@ const sections: LegalSection[] = [
     body: (
       <p>
         For any question about this Cookie Policy, email{" "}
-        <a href="mailto:privacy@adanlabs.ai" className={mailLink}>
-          privacy@adanlabs.ai
+        <a href="mailto:privacy@adanlabs.com" className={mailLink}>
+          privacy@adanlabs.com
         </a>
         . For more on how we handle personal data, see our{" "}
         <Link href="/privacy" className={mailLink}>

@@ -26,18 +26,18 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          <Term>[LEGAL ENTITY NAME]</Term> (&ldquo;Adan Labs&rdquo;,
+          <Term>Adan Labs Limited</Term> (&ldquo;Adan Labs&rdquo;,
           &ldquo;we&rdquo;, &ldquo;us&rdquo;, &ldquo;our&rdquo;) is a company
           established in Ireland under company registration number{" "}
-          <Term>[COMPANY REGISTRATION NUMBER]</Term>, with its registered office
-          at <Term>[REGISTERED ADDRESS, IRELAND]</Term>.
+          <Term>789727</Term>, with its registered office
+          at <Term>47 Corrán Riada, Athlone, N37 X2K5, Ireland</Term>.
         </p>
         <p>
           Adan Labs is the <Term>data controller</Term> responsible for your
           personal data. For any privacy-related question or to exercise your
           rights, contact us at{" "}
-          <a href="mailto:privacy@adanlabs.ai" className={mailLink}>
-            privacy@adanlabs.ai
+          <a href="mailto:privacy@adanlabs.com" className={mailLink}>
+            privacy@adanlabs.com
           </a>
           .
         </p>
@@ -178,8 +178,8 @@ const sections: LegalSection[] = [
         approved by the European Commission, together with supplementary
         safeguards where required. You may request a copy of the relevant
         safeguards by contacting{" "}
-        <a href="mailto:privacy@adanlabs.ai" className={mailLink}>
-          privacy@adanlabs.ai
+        <a href="mailto:privacy@adanlabs.com" className={mailLink}>
+          privacy@adanlabs.com
         </a>
         .
       </p>
@@ -199,7 +199,7 @@ const sections: LegalSection[] = [
           items={[
             <>
               <Term>Enquiry and contact data</Term> — retained for{" "}
-              <Term>[RETENTION PERIOD]</Term> after our last meaningful contact,
+              <Term>24 months</Term> after our last meaningful contact,
               unless an ongoing business relationship requires longer retention.
             </>,
             <>
@@ -250,8 +250,8 @@ const sections: LegalSection[] = [
         />
         <p>
           To exercise any right, email{" "}
-          <a href="mailto:privacy@adanlabs.ai" className={mailLink}>
-            privacy@adanlabs.ai
+          <a href="mailto:privacy@adanlabs.com" className={mailLink}>
+            privacy@adanlabs.com
           </a>
           . We will respond within one month, as required by the GDPR. There is
           normally no charge for exercising your rights.
@@ -325,13 +325,13 @@ const sections: LegalSection[] = [
           items={[
             <>
               Email:{" "}
-              <a href="mailto:privacy@adanlabs.ai" className={mailLink}>
-                privacy@adanlabs.ai
+              <a href="mailto:privacy@adanlabs.com" className={mailLink}>
+                privacy@adanlabs.com
               </a>
             </>,
             <>
-              Post: <Term>[LEGAL ENTITY NAME]</Term>,{" "}
-              <Term>[REGISTERED ADDRESS, IRELAND]</Term>
+              Post: <Term>Adan Labs Limited</Term>,{" "}
+              <Term>47 Corrán Riada, Athlone, N37 X2K5, Ireland</Term>
             </>,
           ]}
         />

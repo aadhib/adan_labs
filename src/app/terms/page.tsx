@@ -41,10 +41,10 @@ const sections: LegalSection[] = [
     body: (
       <>
         <p>
-          The Site is operated by <Term>[LEGAL ENTITY NAME]</Term>, a company
+          The Site is operated by <Term>Adan Labs Limited</Term>, a company
           established in Ireland (company registration number{" "}
-          <Term>[COMPANY REGISTRATION NUMBER]</Term>), with its registered
-          office at <Term>[REGISTERED ADDRESS, IRELAND]</Term>.
+          <Term>789727</Term>), with its registered
+          office at <Term>47 Corrán Riada, Athlone, N37 X2K5, Ireland</Term>.
         </p>
         <p>
           The Site is an informational and marketing website. Its content does
@@ -83,9 +83,9 @@ const sections: LegalSection[] = [
         <p>
           All content on the Site — including text, graphics, logos, layout,
           and design — is owned by or licensed to{" "}
-          <Term>[LEGAL ENTITY NAME]</Term> and is protected by intellectual
+          <Term>Adan Labs Limited</Term> and is protected by intellectual
           property laws. The &ldquo;Adan Labs&rdquo; name and logo are
-          trademarks of <Term>[LEGAL ENTITY NAME]</Term>.
+          trademarks of <Term>Adan Labs Limited</Term>.
         </p>
         <p>
           You are granted a limited, non-exclusive, revocable licence to access
@@ -118,7 +118,7 @@ const sections: LegalSection[] = [
       <>
         <p>
           To the fullest extent permitted by law,{" "}
-          <Term>[LEGAL ENTITY NAME]</Term> will not be liable for any indirect,
+          <Term>Adan Labs Limited</Term> will not be liable for any indirect,
           incidental, or consequential loss, or for any loss of profit, revenue,
           or data, arising from your use of or inability to use the Site.
         </p>
@@ -201,13 +201,13 @@ const sections: LegalSection[] = [
           items={[
             <>
               Email:{" "}
-              <a href="mailto:contact@adanlabs.ai" className={mailLink}>
-                contact@adanlabs.ai
+              <a href="mailto:contact@adanlabs.com" className={mailLink}>
+                contact@adanlabs.com
               </a>
             </>,
             <>
-              Post: <Term>[LEGAL ENTITY NAME]</Term>,{" "}
-              <Term>[REGISTERED ADDRESS, IRELAND]</Term>
+              Post: <Term>Adan Labs Limited</Term>,{" "}
+              <Term>47 Corrán Riada, Athlone, N37 X2K5, Ireland</Term>
             </>,
           ]}
         />
