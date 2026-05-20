@@ -2,6 +2,7 @@
 
 import { FadeIn } from "@/components/ui/fade-in";
 import { SectionLabel } from "@/components/ui/section-label";
+import { KineticSelect } from "@/components/ui/select";
 import { Mail, MapPin, ArrowRight } from "lucide-react";
 
 const inputClasses =
@@ -9,6 +10,16 @@ const inputClasses =
 
 const labelClasses =
   "mb-3 block text-xs font-bold uppercase tracking-[0.25em] text-accent";
+
+const interestOptions = [
+  { value: "operations", label: "Operations & Supply Chain" },
+  { value: "support", label: "Customer Support Automation" },
+  { value: "finance", label: "Finance & Back Office" },
+  { value: "it", label: "IT & Knowledge Systems" },
+  { value: "legal", label: "Legal & Compliance" },
+  { value: "enterprise", label: "Enterprise Process Automation" },
+  { value: "other", label: "Other" },
+];
 
 export function ContactContent() {
   return (
@@ -126,28 +137,12 @@ export function ContactContent() {
                     <label htmlFor="interest" className={labelClasses}>
                       Area of Interest
                     </label>
-                    <select
+                    <KineticSelect
                       id="interest"
-                      className={`${inputClasses} appearance-none`}
-                      defaultValue=""
-                    >
-                      <option value="" disabled>
-                        Select an area
-                      </option>
-                      <option value="operations">
-                        Operations & Supply Chain
-                      </option>
-                      <option value="support">
-                        Customer Support Automation
-                      </option>
-                      <option value="finance">Finance & Back Office</option>
-                      <option value="it">IT & Knowledge Systems</option>
-                      <option value="legal">Legal & Compliance</option>
-                      <option value="enterprise">
-                        Enterprise Process Automation
-                      </option>
-                      <option value="other">Other</option>
-                    </select>
+                      name="interest"
+                      placeholder="Select an area"
+                      options={interestOptions}
+                    />
                   </div>
 
                   <div>
