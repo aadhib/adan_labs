@@ -1,8 +1,10 @@
 "use client";
 
-import { FadeIn } from "@/components/ui/fade-in";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+
+import { FadeIn } from "@/components/ui/fade-in";
+import { SectionLabel } from "@/components/ui/section-label";
 
 const industries = [
   {
@@ -10,7 +12,7 @@ const industries = [
     title: "Operations & Supply Chain",
     description:
       "Autonomous agents that monitor, predict, and optimize supply chain operations — from demand forecasting to logistics coordination.",
-    outcome: "40% reduction in supply chain disruptions",
+    outcome: "40% fewer supply chain disruptions",
     href: "/solutions#operations",
   },
   {
@@ -26,7 +28,7 @@ const industries = [
     title: "Finance & Back Office",
     description:
       "Agentic workflows for invoice processing, reconciliation, compliance reporting, and financial planning with full audit trails.",
-    outcome: "90% reduction in manual processing",
+    outcome: "90% less manual processing",
     href: "/solutions#finance",
   },
   {
@@ -41,55 +43,56 @@ const industries = [
 
 export function IndustriesSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <FadeIn className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
-          <div className="max-w-2xl">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-4">
-              Use Cases
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight">
-              Agentic AI across
-              <br />
-              <span className="font-normal gradient-text">every function</span>
-            </h2>
-          </div>
-          <Link
-            href="/solutions"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
-          >
-            View all solutions
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+    <section className="border-b-2 border-border">
+      <div className="mx-auto w-full max-w-[1760px] px-6 pt-24 md:px-12 md:pt-32">
+        <FadeIn>
+          <SectionLabel index="06">Use Cases</SectionLabel>
         </FadeIn>
-
-        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
-          {industries.map((industry, i) => (
-            <FadeIn key={industry.title} delay={i * 0.1}>
-              <Link
-                href={industry.href}
-                className="group block rounded-2xl border border-border bg-card/30 backdrop-blur-sm p-8 lg:p-10 hover:border-primary/20 hover:bg-card/50 transition-all h-full"
-              >
-                <span className="text-[11px] tracking-[0.2em] text-primary/60 uppercase block mb-6 font-mono">
-                  {industry.label}
-                </span>
-                <h3 className="text-lg font-normal tracking-tight mb-3 group-hover:text-foreground transition-colors">
-                  {industry.title}
-                </h3>
-                <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                  {industry.description}
-                </p>
-                <div className="flex items-center justify-between pt-5 border-t border-border">
-                  <span className="text-[11px] text-primary/70 tracking-wide font-mono">
-                    {industry.outcome}
-                  </span>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-                </div>
-              </Link>
-            </FadeIn>
-          ))}
+        <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
+          <FadeIn delay={0.05}>
+            <h2 className="max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Agentic AI across{" "}
+              <span className="text-accent">every function</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <Link
+              href="/solutions"
+              className="group inline-flex items-center gap-3 text-sm font-bold uppercase tracking-tighter text-foreground transition-colors hover:text-accent"
+            >
+              View all solutions
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </FadeIn>
         </div>
+      </div>
+
+      {/* Industry link cards — hairline grid, hover flood */}
+      <div className="mt-16 grid grid-cols-1 gap-px border-t-2 border-border bg-border md:mt-24 md:grid-cols-2">
+        {industries.map((industry) => (
+          <FadeIn key={industry.title} className="h-full">
+            <Link
+              href={industry.href}
+              className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12"
+            >
+              <span className="text-xs font-bold uppercase tracking-[0.25em] text-accent group-hover:text-accent-foreground">
+                {industry.label}
+              </span>
+              <h3 className="mt-6 max-w-[14ch] font-bold uppercase leading-[0.9] tracking-tighter text-foreground text-[clamp(1.75rem,3vw,2.75rem)] transition-transform duration-300 group-hover:translate-x-3 group-hover:text-accent-foreground">
+                {industry.title}
+              </h3>
+              <p className="mt-4 max-w-md text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                {industry.description}
+              </p>
+              <div className="mt-8 flex items-center justify-between border-t-2 border-border pt-5 group-hover:border-accent-foreground/20">
+                <span className="text-sm font-bold uppercase tracking-tight text-foreground group-hover:text-accent-foreground">
+                  {industry.outcome}
+                </span>
+                <ArrowRight className="h-5 w-5 text-accent transition-transform duration-300 group-hover:translate-x-1 group-hover:text-accent-foreground" />
+              </div>
+            </Link>
+          </FadeIn>
+        ))}
       </div>
     </section>
   );

@@ -1,98 +1,95 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
-import { TrendingUp, Shield, Zap, Target } from "lucide-react";
+import { SectionLabel } from "@/components/ui/section-label";
 
 const reasons = [
   {
-    icon: TrendingUp,
+    number: "01",
     title: "From Tasks to Outcomes",
     description:
       "Traditional AI assists with tasks. Agentic AI drives outcomes — autonomously managing end-to-end processes with measurable business impact.",
   },
   {
-    icon: Zap,
+    number: "02",
     title: "Operational Velocity",
     description:
       "Agents that work 24/7 across every timezone, executing complex multi-step workflows in minutes that previously required days of human coordination.",
   },
   {
-    icon: Shield,
+    number: "03",
     title: "Governance by Design",
     description:
       "Enterprise-grade guardrails, audit trails, and human-on-the-loop oversight ensure every autonomous action meets compliance and security standards.",
   },
   {
-    icon: Target,
+    number: "04",
     title: "Measurable ROI",
     description:
       "Every deployment is tied to quantifiable business metrics — cost reduction, throughput improvement, error elimination, and time-to-value acceleration.",
   },
 ];
 
+const stats = [
+  { value: "10×", label: "Process Throughput" },
+  { value: "85%", label: "Error Reduction" },
+];
+
 export function WhyAgenticSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-      <div className="absolute inset-0 bg-grid opacity-30" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
-          <FadeIn>
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-4">
-              The Imperative
-            </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6">
-              Why enterprises need
-              <br />
-              <span className="font-normal gradient-text">
-                agentic AI now
-              </span>
-            </h2>
-            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-8">
-              The gap between companies deploying autonomous AI agents and those
-              still relying on passive tools is widening every quarter. The
-              competitive advantage is not incremental — it is structural.
-            </p>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-xl border border-primary/20 bg-primary/5 p-5">
-                <span className="text-3xl font-light tracking-tight block mb-1 gradient-text">
-                  10x
-                </span>
-                <span className="text-[11px] text-muted-foreground tracking-wide font-mono">
-                  Process Throughput
-                </span>
-              </div>
-              <div className="rounded-xl border border-accent/20 bg-accent/5 p-5">
-                <span className="text-3xl font-light tracking-tight block mb-1 gradient-text">
-                  85%
-                </span>
-                <span className="text-[11px] text-muted-foreground tracking-wide font-mono">
-                  Error Reduction
-                </span>
-              </div>
-            </div>
-          </FadeIn>
+    <section className="border-b-2 border-border">
+      <div className="mx-auto w-full max-w-[1760px] px-6 pt-24 md:px-12 md:pt-32">
+        <FadeIn>
+          <SectionLabel index="04">The Imperative</SectionLabel>
+        </FadeIn>
+        <FadeIn delay={0.05}>
+          <h2 className="mt-8 max-w-[16ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+            Why enterprises need{" "}
+            <span className="text-accent">agentic AI now</span>
+          </h2>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-xl">
+            The gap between companies deploying autonomous AI agents and those
+            still relying on passive tools is widening every quarter. The
+            competitive advantage is not incremental — it is structural.
+          </p>
+        </FadeIn>
 
-          <div className="space-y-4">
-            {reasons.map((reason, i) => (
-              <FadeIn key={reason.title} delay={i * 0.1}>
-                <div className="flex gap-5 p-6 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:border-primary/20 hover:bg-card/50 transition-all">
-                  <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                    <reason.icon className="w-4 h-4 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="text-sm font-medium tracking-tight mb-2">
-                      {reason.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {reason.description}
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+        {/* Massive stat numbers */}
+        <div className="mt-16 grid grid-cols-1 gap-px border-2 border-border bg-border sm:grid-cols-2">
+          {stats.map((stat) => (
+            <FadeIn key={stat.label} className="h-full">
+              <div className="flex h-full flex-col justify-between gap-6 bg-background p-8 md:p-12">
+                <span className="font-bold leading-[0.8] tracking-tighter text-accent text-[clamp(4rem,11vw,9rem)]">
+                  {stat.value}
+                </span>
+                <span className="text-sm font-bold uppercase tracking-[0.25em] text-foreground">
+                  {stat.label}
+                </span>
+              </div>
+            </FadeIn>
+          ))}
         </div>
+      </div>
+
+      {/* Reason cards — hairline grid, hover flood */}
+      <div className="mt-16 grid grid-cols-1 gap-px border-t-2 border-border bg-border md:mt-24 md:grid-cols-2">
+        {reasons.map((reason) => (
+          <FadeIn key={reason.number} className="h-full">
+            <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12">
+              <span className="font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)] group-hover:text-accent-foreground/25">
+                {reason.number}
+              </span>
+              <h3 className="mt-6 text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
+                {reason.title}
+              </h3>
+              <p className="mt-4 text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                {reason.description}
+              </p>
+            </article>
+          </FadeIn>
+        ))}
       </div>
     </section>
   );

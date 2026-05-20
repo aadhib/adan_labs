@@ -1,11 +1,10 @@
 "use client";
 
+import { SectionLabel } from "@/components/ui/section-label";
 import { FadeIn } from "@/components/ui/fade-in";
-import { Brain, Database, Network } from "lucide-react";
 
 const pillars = [
   {
-    icon: Brain,
     label: "01",
     title: "Advanced Agentic Reasoning",
     description:
@@ -20,7 +19,6 @@ const pillars = [
     ],
   },
   {
-    icon: Database,
     label: "02",
     title: "Cognitive Memory Systems",
     description:
@@ -35,7 +33,6 @@ const pillars = [
     ],
   },
   {
-    icon: Network,
     label: "03",
     title: "Multi-Agent Orchestration",
     description:
@@ -53,65 +50,62 @@ const pillars = [
 
 export function PillarsSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-4">
-            Core Technology
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6">
-            Three pillars of
-            <br />
-            <span className="font-normal gradient-text">
-              agentic intelligence
-            </span>
+    <section className="border-b-2 border-border">
+      <div className="mx-auto w-full max-w-[1760px] px-6 pt-24 md:px-12 md:pt-32">
+        <FadeIn>
+          <SectionLabel index="03">Core Technology</SectionLabel>
+        </FadeIn>
+        <FadeIn delay={0.05}>
+          <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+            Three pillars of{" "}
+            <span className="text-accent">agentic intelligence</span>
           </h2>
-          <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-xl">
             Every Adan Labs agent is built on a unified architecture that
             combines advanced reasoning, persistent memory, and coordinated
             multi-agent execution.
           </p>
         </FadeIn>
+      </div>
 
-        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
-          {pillars.map((pillar, i) => (
-            <FadeIn key={pillar.title} delay={i * 0.1}>
-              <div className="group rounded-2xl border border-border bg-card/30 backdrop-blur-sm p-8 lg:p-10 hover:border-primary/20 hover:bg-card/50 transition-all h-full flex flex-col">
-                <div className="flex items-center justify-between mb-8">
-                  <div className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
-                    <pillar.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <span className="text-xs tracking-wider text-muted-foreground font-mono">
+      {/* Sticky stacking cards */}
+      <div className="mt-16 md:mt-24">
+        {pillars.map((pillar) => (
+          <div key={pillar.label} className="sticky top-20">
+            <article className="group flex min-h-[86vh] flex-col justify-center border-t-2 border-border bg-background px-6 py-16 transition-colors duration-300 hover:bg-accent md:px-12">
+              <div className="mx-auto grid w-full max-w-[1760px] grid-cols-1 gap-10 lg:grid-cols-[1.1fr_1fr]">
+                <div>
+                  <span className="block font-bold leading-[0.8] tracking-tighter text-muted text-[clamp(6rem,16vw,15rem)] group-hover:text-accent-foreground/20">
                     {pillar.label}
                   </span>
+                  <h3 className="mt-4 max-w-[12ch] font-bold uppercase leading-[0.9] tracking-tighter text-foreground text-[clamp(2rem,4.5vw,4rem)] group-hover:text-accent-foreground">
+                    {pillar.title}
+                  </h3>
                 </div>
-
-                <h3 className="text-xl font-normal tracking-tight mb-4">
-                  {pillar.title}
-                </h3>
-
-                <p className="text-sm text-muted-foreground leading-relaxed mb-8">
-                  {pillar.description}
-                </p>
-
-                <div className="mt-auto pt-6 border-t border-border">
-                  <ul className="grid grid-cols-1 gap-2">
+                <div className="flex flex-col justify-center">
+                  <p className="text-xl leading-tight text-muted-foreground group-hover:text-accent-foreground/80 md:text-2xl">
+                    {pillar.description}
+                  </p>
+                  <ul className="mt-10 grid grid-cols-1 gap-x-8 sm:grid-cols-2">
                     {pillar.capabilities.map((cap) => (
                       <li
                         key={cap}
-                        className="text-[11px] tracking-wide text-muted-foreground font-mono"
+                        className="flex items-center gap-3 border-t-2 border-border py-3 text-sm font-bold uppercase tracking-tight text-foreground group-hover:border-accent-foreground/20 group-hover:text-accent-foreground"
                       >
-                        <span className="text-primary/40 mr-2">/</span>
+                        <span aria-hidden="true" className="text-accent group-hover:text-accent-foreground">
+                          /
+                        </span>
                         {cap}
                       </li>
                     ))}
                   </ul>
                 </div>
               </div>
-            </FadeIn>
-          ))}
-        </div>
+            </article>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -1,6 +1,8 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
+import { SectionLabel } from "@/components/ui/section-label";
+import { KineticMarquee } from "@/components/ui/marquee";
 
 const integrations = [
   "SAP",
@@ -13,42 +15,50 @@ const integrations = [
 
 export function TrustedSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-4">
-            The Future of Work
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6">
-            The workforce of tomorrow
-            <br />
-            <span className="font-normal gradient-text">is autonomous</span>
+    <section className="border-b-2 border-border">
+      <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+        <FadeIn>
+          <SectionLabel index="01">The Future of Work</SectionLabel>
+        </FadeIn>
+        <FadeIn delay={0.05}>
+          <h2 className="mt-8 max-w-[15ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+            The workforce of tomorrow{" "}
+            <span className="text-accent">is autonomous</span>
           </h2>
-          <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-xl">
             Enterprises are shifting from passive AI tools to intelligent agents
             that reason, plan, and execute — autonomously driving outcomes
             across every function.
           </p>
         </FadeIn>
+      </div>
 
-        <FadeIn delay={0.2}>
-          <div className="rounded-2xl border border-border bg-card/40 backdrop-blur-sm p-8 lg:p-12">
-            <p className="text-xs tracking-[0.2em] text-muted-foreground uppercase text-center mb-8">
-              Enterprise-Ready Interoperability
-            </p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
-              {integrations.map((name) => (
-                <div
-                  key={name}
-                  className="flex items-center justify-center h-12 rounded-lg border border-border bg-background/60 text-sm text-muted-foreground font-mono tracking-wide hover:border-primary/30 hover:text-foreground transition-colors"
-                >
+      {/* Integration marquee — slow rhythm */}
+      <div className="border-t-2 border-border py-6">
+        <div className="mb-5 px-6 md:px-12">
+          <span className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground">
+            Enterprise-ready interoperability
+          </span>
+        </div>
+        <KineticMarquee speed={35}>
+          <div className="flex items-center">
+            {integrations.map((name) => (
+              <span key={name} className="flex items-center">
+                <span className="px-8 text-3xl font-bold uppercase tracking-tighter text-foreground md:text-5xl">
                   {name}
-                </div>
-              ))}
-            </div>
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="text-xl text-accent md:text-3xl"
+                >
+                  ✦
+                </span>
+              </span>
+            ))}
           </div>
-        </FadeIn>
+        </KineticMarquee>
       </div>
     </section>
   );

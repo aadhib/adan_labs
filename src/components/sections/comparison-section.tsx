@@ -1,7 +1,7 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
-import { ArrowRight } from "lucide-react";
+import { SectionLabel } from "@/components/ui/section-label";
 
 const generativeTraits = [
   "Single-turn responses",
@@ -23,70 +23,81 @@ const agenticTraits = [
 
 export function ComparisonSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-      <div className="absolute inset-0 bg-dots opacity-30" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-4">
-            The Paradigm Shift
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight">
-            From Generative AI
-            <br />
-            <span className="font-normal gradient-text">
-              to Agentic Execution
-            </span>
+    <section className="border-b-2 border-border">
+      <div className="mx-auto w-full max-w-[1760px] px-6 pt-24 md:px-12 md:pt-32">
+        <FadeIn>
+          <SectionLabel index="02">The Paradigm Shift</SectionLabel>
+        </FadeIn>
+        <FadeIn delay={0.05}>
+          <h2 className="mt-8 max-w-[16ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+            From generative AI{" "}
+            <span className="text-accent">to agentic execution</span>
           </h2>
         </FadeIn>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          <FadeIn delay={0.1}>
-            <div className="rounded-2xl border border-border bg-card/30 backdrop-blur-sm p-8 lg:p-10 h-full">
-              <div className="flex items-center gap-3 mb-8">
-                <span className="inline-block w-2 h-2 rounded-full bg-muted-foreground/40" />
-                <h3 className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
-                  Generative AI
-                </h3>
-              </div>
-              <ul className="space-y-4">
-                {generativeTraits.map((trait) => (
-                  <li
-                    key={trait}
-                    className="flex items-start gap-3 text-muted-foreground"
-                  >
-                    <span className="mt-2 block w-1 h-1 rounded-full bg-muted-foreground/40 shrink-0" />
-                    <span className="text-sm leading-relaxed">{trait}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <div className="rounded-2xl border border-primary/20 bg-primary/[0.03] backdrop-blur-sm p-8 lg:p-10 h-full">
-              <div className="flex items-center gap-3 mb-8">
-                <span className="inline-block w-2 h-2 rounded-full bg-primary" />
-                <h3 className="text-xs tracking-[0.2em] text-foreground uppercase">
-                  Agentic AI
-                </h3>
-                <span className="ml-auto text-[10px] tracking-wider text-primary/60 font-mono">
-                  ADAN LABS
+      {/* Two-column hard contrast */}
+      <div className="mt-16 grid grid-cols-1 gap-px border-t-2 border-border bg-border md:mt-24 md:grid-cols-2">
+        {/* Generative — muted, inert */}
+        <div className="bg-background p-8 md:p-14">
+          <div className="mb-10 flex items-baseline justify-between">
+            <h3 className="text-2xl font-bold uppercase tracking-tighter text-muted-foreground md:text-4xl">
+              Generative AI
+            </h3>
+            <span
+              aria-hidden="true"
+              className="font-bold leading-none text-muted text-[clamp(3rem,8vw,7rem)]"
+            >
+              01
+            </span>
+          </div>
+          <ul className="flex flex-col">
+            {generativeTraits.map((trait) => (
+              <li
+                key={trait}
+                className="flex items-center gap-4 border-t-2 border-border py-5 text-lg font-medium text-muted-foreground md:text-xl"
+              >
+                <span
+                  aria-hidden="true"
+                  className="text-xl text-muted-foreground"
+                >
+                  ✕
                 </span>
-              </div>
-              <ul className="space-y-4">
-                {agenticTraits.map((trait) => (
-                  <li
-                    key={trait}
-                    className="flex items-start gap-3 text-foreground"
-                  >
-                    <ArrowRight className="mt-0.5 w-4 h-4 text-primary/60 shrink-0" />
-                    <span className="text-sm leading-relaxed">{trait}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
+                {trait}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Agentic — accent flood, active */}
+        <div className="bg-accent p-8 text-accent-foreground md:p-14">
+          <div className="mb-10 flex items-baseline justify-between">
+            <h3 className="text-2xl font-bold uppercase tracking-tighter md:text-4xl">
+              Agentic AI
+            </h3>
+            <span
+              aria-hidden="true"
+              className="font-bold leading-none text-accent-foreground/15 text-[clamp(3rem,8vw,7rem)]"
+            >
+              02
+            </span>
+          </div>
+          <ul className="flex flex-col">
+            {agenticTraits.map((trait) => (
+              <li
+                key={trait}
+                className="flex items-center gap-4 border-t-2 border-accent-foreground/20 py-5 text-lg font-bold uppercase tracking-tight md:text-xl"
+              >
+                <span aria-hidden="true" className="text-xl">
+                  →
+                </span>
+                {trait}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-10 text-xs font-bold uppercase tracking-[0.3em]">
+            Built by Adan Labs
+          </p>
         </div>
       </div>
     </section>

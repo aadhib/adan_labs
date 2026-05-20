@@ -1,29 +1,25 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
-import { ShieldCheck, Eye, FileCheck, Lock } from "lucide-react";
+import { SectionLabel } from "@/components/ui/section-label";
 
 const governanceFeatures = [
   {
-    icon: ShieldCheck,
     title: "Policy Enforcement",
     description:
       "Configurable guardrails define what agents can and cannot do, enforced at every execution step with zero-bypass architecture.",
   },
   {
-    icon: Eye,
     title: "Human-on-the-Loop",
     description:
       "Critical decisions surface to human operators for approval while routine tasks execute autonomously — the right balance of speed and control.",
   },
   {
-    icon: FileCheck,
     title: "Complete Audit Trails",
     description:
       "Every agent action, decision, and data access is logged with full provenance — meeting the most demanding compliance frameworks.",
   },
   {
-    icon: Lock,
     title: "Enterprise Security",
     description:
       "SOC 2 aligned security architecture with end-to-end encryption, role-based access control, and data residency compliance.",
@@ -32,45 +28,43 @@ const governanceFeatures = [
 
 export function GovernanceSection() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-      <div className="absolute inset-0 bg-grid-fine opacity-20" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-4">
-            Trust & Governance
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6">
-            Autonomy with
-            <br />
-            <span className="font-normal gradient-text">accountability</span>
+    <section className="border-b-2 border-border">
+      <div className="mx-auto w-full max-w-[1760px] px-6 pt-24 md:px-12 md:pt-32">
+        <FadeIn>
+          <SectionLabel index="07">Trust & Governance</SectionLabel>
+        </FadeIn>
+        <FadeIn delay={0.05}>
+          <h2 className="mt-8 max-w-[12ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+            Autonomy with{" "}
+            <span className="text-accent">accountability</span>
           </h2>
-          <p className="text-muted-foreground text-base lg:text-lg leading-relaxed">
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-xl">
             Adan Labs agents operate within enterprise-grade governance
             frameworks that ensure every autonomous action is safe, compliant,
             and auditable.
           </p>
         </FadeIn>
+      </div>
 
-        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8">
-          {governanceFeatures.map((feature, i) => (
-            <FadeIn key={feature.title} delay={i * 0.1}>
-              <div className="flex gap-5 p-8 rounded-xl border border-border bg-card/30 backdrop-blur-sm hover:border-primary/20 hover:bg-card/50 transition-all">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                  <feature.icon className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium tracking-tight mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            </FadeIn>
-          ))}
-        </div>
+      {/* Feature cards — hairline grid, hover flood */}
+      <div className="mt-16 grid grid-cols-1 gap-px border-t-2 border-border bg-border md:mt-24 md:grid-cols-2">
+        {governanceFeatures.map((feature, i) => (
+          <FadeIn key={feature.title} className="h-full">
+            <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12">
+              <span className="font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)] group-hover:text-accent-foreground/25">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="mt-6 text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
+                {feature.title}
+              </h3>
+              <p className="mt-4 max-w-md text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                {feature.description}
+              </p>
+            </article>
+          </FadeIn>
+        ))}
       </div>
     </section>
   );

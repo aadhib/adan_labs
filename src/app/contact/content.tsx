@@ -1,26 +1,32 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
+import { SectionLabel } from "@/components/ui/section-label";
 import { Mail, MapPin, ArrowRight } from "lucide-react";
+
+const inputClasses =
+  "h-16 w-full rounded-none border-2 border-border bg-transparent px-5 text-sm font-bold uppercase tracking-tight text-foreground placeholder:text-muted focus:border-accent focus:outline-none transition-colors";
+
+const labelClasses =
+  "mb-3 block text-xs font-bold uppercase tracking-[0.25em] text-accent";
 
 export function ContactContent() {
   return (
     <>
       {/* Page Hero */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-cosmic pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="max-w-3xl">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-              Contact
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight mb-6">
-              Let&rsquo;s explore what
-              <br />
-              <span className="font-normal gradient-text">agentic AI can do for you</span>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 pt-40 pb-24 md:px-12 md:pt-52 md:pb-32">
+          <FadeIn>
+            <SectionLabel>Contact</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h1 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,8vw,8rem)]">
+              Let&rsquo;s explore what{" "}
+              <span className="text-accent">agentic AI can do for you</span>
             </h1>
-            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-2xl">
               Schedule a strategy call with our team to discuss your enterprise
               challenges and explore how Adan Labs can deliver measurable
               outcomes through autonomous AI.
@@ -30,115 +36,99 @@ export function ContactContent() {
       </section>
 
       {/* Contact Form + Info */}
-      <section className="py-24 lg:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-16">
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <div className="grid gap-px border-2 border-border bg-border lg:grid-cols-5">
             {/* Form */}
-            <FadeIn className="lg:col-span-3">
-              <div className="border border-border rounded-2xl p-8 lg:p-12 bg-card/40 backdrop-blur-sm">
-                <h2 className="text-xl font-light tracking-tight mb-2">
-                  Request a Strategy Call
+            <FadeIn className="h-full lg:col-span-3">
+              <div className="flex h-full flex-col bg-background p-8 md:p-12">
+                <SectionLabel index="01">Request a Strategy Call</SectionLabel>
+                <h2 className="mt-8 max-w-[16ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2rem,4vw,3.5rem)]">
+                  Tell us about your{" "}
+                  <span className="text-accent">challenge</span>
                 </h2>
-                <p className="text-sm text-muted-foreground mb-10">
+                <p className="mt-6 max-w-md text-lg leading-tight text-muted-foreground">
                   Tell us about your enterprise challenges and we will prepare a
                   tailored assessment of how Adan Labs can help.
                 </p>
 
                 <form
                   onSubmit={(e) => e.preventDefault()}
-                  className="space-y-6"
+                  className="mt-12 space-y-8"
                 >
-                  <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="grid gap-8 sm:grid-cols-2">
                     <div>
-                      <label
-                        htmlFor="firstName"
-                        className="block text-[11px] tracking-[0.15em] text-muted-foreground uppercase font-mono mb-2"
-                      >
+                      <label htmlFor="firstName" className={labelClasses}>
                         First Name
                       </label>
                       <input
                         id="firstName"
                         type="text"
                         required
-                        className="w-full px-4 py-3 text-sm bg-background/60 border border-border rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                        className={inputClasses}
                         placeholder="Jane"
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="lastName"
-                        className="block text-[11px] tracking-[0.15em] text-muted-foreground uppercase font-mono mb-2"
-                      >
+                      <label htmlFor="lastName" className={labelClasses}>
                         Last Name
                       </label>
                       <input
                         id="lastName"
                         type="text"
                         required
-                        className="w-full px-4 py-3 text-sm bg-background/60 border border-border rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                        className={inputClasses}
                         placeholder="Smith"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-[11px] tracking-[0.15em] text-muted-foreground uppercase font-mono mb-2"
-                    >
+                    <label htmlFor="email" className={labelClasses}>
                       Work Email
                     </label>
                     <input
                       id="email"
                       type="email"
                       required
-                      className="w-full px-4 py-3 text-sm bg-background/60 border border-border rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                      className={inputClasses}
                       placeholder="jane@company.com"
                     />
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-6">
+                  <div className="grid gap-8 sm:grid-cols-2">
                     <div>
-                      <label
-                        htmlFor="company"
-                        className="block text-[11px] tracking-[0.15em] text-muted-foreground uppercase font-mono mb-2"
-                      >
+                      <label htmlFor="company" className={labelClasses}>
                         Company
                       </label>
                       <input
                         id="company"
                         type="text"
                         required
-                        className="w-full px-4 py-3 text-sm bg-background/60 border border-border rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                        className={inputClasses}
                         placeholder="Acme Corp"
                       />
                     </div>
                     <div>
-                      <label
-                        htmlFor="role"
-                        className="block text-[11px] tracking-[0.15em] text-muted-foreground uppercase font-mono mb-2"
-                      >
+                      <label htmlFor="role" className={labelClasses}>
                         Role
                       </label>
                       <input
                         id="role"
                         type="text"
-                        className="w-full px-4 py-3 text-sm bg-background/60 border border-border rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors"
+                        className={inputClasses}
                         placeholder="CTO"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="interest"
-                      className="block text-[11px] tracking-[0.15em] text-muted-foreground uppercase font-mono mb-2"
-                    >
+                    <label htmlFor="interest" className={labelClasses}>
                       Area of Interest
                     </label>
                     <select
                       id="interest"
-                      className="w-full px-4 py-3 text-sm bg-background/60 border border-border rounded-lg text-foreground focus:outline-none focus:border-primary/40 transition-colors appearance-none"
+                      className={`${inputClasses} appearance-none`}
                       defaultValue=""
                     >
                       <option value="" disabled>
@@ -161,39 +151,36 @@ export function ContactContent() {
                   </div>
 
                   <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-[11px] tracking-[0.15em] text-muted-foreground uppercase font-mono mb-2"
-                    >
+                    <label htmlFor="message" className={labelClasses}>
                       Tell Us About Your Challenge
                     </label>
                     <textarea
                       id="message"
                       rows={5}
-                      className="w-full px-4 py-3 text-sm bg-background/60 border border-border rounded-lg text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/40 transition-colors resize-none"
+                      className="w-full resize-none rounded-none border-2 border-border bg-transparent px-5 py-4 text-sm font-bold uppercase tracking-tight text-foreground placeholder:text-muted focus:border-accent focus:outline-none transition-colors"
                       placeholder="Describe the enterprise processes you're looking to automate, your current pain points, and what outcomes you're hoping to achieve..."
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="inline-flex items-center gap-2 text-sm font-medium px-8 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors w-full sm:w-auto justify-center"
+                    className="inline-flex h-16 w-full items-center justify-center gap-3 rounded-none border-2 border-accent bg-accent px-10 text-base font-bold uppercase tracking-tighter text-accent-foreground transition-transform duration-200 hover:scale-105 active:scale-95 sm:w-auto md:h-20 md:px-12 md:text-lg"
                   >
                     Submit Request
-                    <ArrowRight className="w-4 h-4" />
+                    <ArrowRight className="h-5 w-5" />
                   </button>
                 </form>
               </div>
             </FadeIn>
 
             {/* Contact Info */}
-            <FadeIn delay={0.2} className="lg:col-span-2">
-              <div className="space-y-8">
-                <div>
-                  <h3 className="text-lg font-light tracking-tight mb-4">
+            <FadeIn delay={0.1} className="h-full lg:col-span-2">
+              <div className="flex h-full flex-col gap-px bg-border">
+                <div className="bg-background p-8 md:p-12">
+                  <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground md:text-3xl">
                     What to expect
                   </h3>
-                  <div className="space-y-4">
+                  <div className="mt-8 space-y-6">
                     {[
                       {
                         step: "01",
@@ -208,11 +195,14 @@ export function ContactContent() {
                         text: "A detailed proposal with projected outcomes and implementation timeline.",
                       },
                     ].map((item) => (
-                      <div key={item.step} className="flex gap-4">
-                        <span className="font-mono text-sm text-primary/40 shrink-0">
+                      <div key={item.step} className="flex gap-5">
+                        <span
+                          aria-hidden="true"
+                          className="shrink-0 font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)]"
+                        >
                           {item.step}
                         </span>
-                        <p className="text-sm text-muted-foreground leading-relaxed">
+                        <p className="text-lg leading-tight text-muted-foreground">
                           {item.text}
                         </p>
                       </div>
@@ -220,42 +210,42 @@ export function ContactContent() {
                   </div>
                 </div>
 
-                <div className="bg-card/30 backdrop-blur-sm border border-border rounded-xl p-6">
-                  <h3 className="text-lg font-light tracking-tight mb-6">
+                <div className="bg-background p-8 md:p-12">
+                  <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground md:text-3xl">
                     Direct contact
                   </h3>
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-3">
-                      <Mail className="w-4 h-4 text-primary/60" />
-                      <span className="text-sm text-muted-foreground">
+                  <div className="mt-8 space-y-5">
+                    <div className="flex items-center gap-4">
+                      <Mail aria-hidden="true" className="h-5 w-5 shrink-0 text-accent" />
+                      <span className="text-lg font-bold uppercase tracking-tight text-foreground">
                         contact@adanlabs.ai
                       </span>
                     </div>
-                    <div className="flex items-center gap-3">
-                      <MapPin className="w-4 h-4 text-primary/60" />
-                      <span className="text-sm text-muted-foreground">
+                    <div className="flex items-center gap-4">
+                      <MapPin aria-hidden="true" className="h-5 w-5 shrink-0 text-accent" />
+                      <span className="text-lg font-bold uppercase tracking-tight text-foreground">
                         San Francisco, CA
                       </span>
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-card/30 backdrop-blur-sm border border-border rounded-xl p-6">
-                  <h3 className="text-lg font-light tracking-tight mb-4">
+                <div className="bg-background p-8 md:p-12">
+                  <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground md:text-3xl">
                     Enterprise inquiries
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                  <p className="mt-6 text-lg leading-tight text-muted-foreground">
                     For large-scale deployments, strategic partnerships, or
                     custom solutions, reach out to our enterprise team directly.
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="mt-4 text-lg font-bold uppercase tracking-tight text-foreground">
                     enterprise@adanlabs.ai
                   </p>
                 </div>
 
-                <div className="bg-card/40 backdrop-blur-sm border border-primary/20 rounded-xl p-6">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    <span className="text-foreground font-medium">
+                <div className="flex flex-1 flex-col justify-center border-l-4 border-accent bg-background p-8 md:p-12">
+                  <p className="text-lg leading-tight text-muted-foreground">
+                    <span className="font-bold uppercase tracking-tighter text-foreground">
                       Trusted by forward-thinking enterprises.
                     </span>{" "}
                     Adan Labs works with organizations that understand the

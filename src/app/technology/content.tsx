@@ -1,19 +1,9 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
+import { SectionLabel } from "@/components/ui/section-label";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Brain,
-  Database,
-  Network,
-  ShieldCheck,
-  Plug,
-  ChevronDown,
-  Workflow,
-  Sparkles,
-  BarChart3,
-} from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 const steps = [
@@ -82,20 +72,35 @@ function FAQItem({ q, a }: { q: string; a: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div
-      className={`border rounded-xl overflow-hidden transition-all ${isOpen ? "border-primary/20 bg-primary/[0.03]" : "border-border"}`}
+      className={`border-2 transition-colors duration-300 ${
+        isOpen ? "border-accent bg-accent" : "border-border bg-background"
+      }`}
     >
       <button
+        type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between p-6 text-left hover:bg-card/50 transition-colors"
+        aria-expanded={isOpen}
+        className="flex w-full items-center justify-between gap-6 p-6 text-left outline-none transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent md:p-8"
       >
-        <span className="text-sm font-medium pr-4">{q}</span>
+        <span
+          className={`text-lg font-bold uppercase tracking-tighter md:text-xl ${
+            isOpen ? "text-accent-foreground" : "text-foreground"
+          }`}
+        >
+          {q}
+        </span>
         <ChevronDown
-          className={`w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
+          aria-hidden="true"
+          className={`size-6 shrink-0 transition-transform duration-200 ${
+            isOpen ? "rotate-180 text-accent-foreground" : "text-accent"
+          }`}
         />
       </button>
       {isOpen && (
-        <div className="px-6 pb-6">
-          <p className="text-sm text-muted-foreground leading-relaxed">{a}</p>
+        <div className="px-6 pb-8 md:px-8">
+          <p className="max-w-3xl text-lg leading-tight text-accent-foreground/80">
+            {a}
+          </p>
         </div>
       )}
     </div>
@@ -106,20 +111,19 @@ export function TechnologyContent() {
   return (
     <>
       {/* Page Hero */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-cosmic pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="max-w-3xl">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-              Technology
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight mb-6">
-              The architecture behind
-              <br />
-              <span className="font-normal">agentic intelligence</span>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 pt-40 pb-24 md:px-12 md:pt-52 md:pb-32">
+          <FadeIn>
+            <SectionLabel>Technology</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h1 className="mt-8 max-w-[16ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,8vw,8rem)]">
+              The architecture behind{" "}
+              <span className="text-accent">agentic intelligence</span>
             </h1>
-            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-2xl">
               Adan Labs is built on a unified architecture that combines
               advanced reasoning, persistent cognitive memory, and multi-agent
               orchestration — purpose-built for autonomous enterprise execution.
@@ -129,396 +133,379 @@ export function TechnologyContent() {
       </section>
 
       {/* Agentic Reasoning */}
-      <section id="reasoning" className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <FadeIn>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <Brain className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-xs tracking-[0.2em] uppercase text-primary/80">
-                  Pillar 01
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-                Advanced Agentic
-                <br />
-                <span className="font-normal gradient-text">Reasoning</span>
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+      <section id="reasoning" className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="01">Pillar 01</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Advanced Agentic{" "}
+              <span className="text-accent">Reasoning</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="mt-8 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
                 Our reasoning engine goes beyond simple prompt-response cycles.
                 Adan Labs agents employ structured chain-of-thought processing
                 to decompose complex objectives, evaluate multiple solution
                 paths, and self-correct during execution — mirroring the
                 deliberate reasoning of expert human operators.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
                 Every reasoning step is transparent and auditable. The agent
                 explicitly records its thought process, the alternatives it
                 considered, and why it chose a particular action — creating a
                 complete cognitive trace that builds trust with enterprise
                 stakeholders.
               </p>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Capability cards — hairline grid, hover flood */}
+        <div className="grid grid-cols-1 gap-px border-t-2 border-border bg-border md:grid-cols-3">
+          {[
+            {
+              title: "Chain-of-Thought Processing",
+              text: "Structured reasoning chains that break complex problems into logical steps with explicit intermediate conclusions.",
+            },
+            {
+              title: "Self-Reflection & Correction",
+              text: "Continuous evaluation loops that detect errors, reassess strategies, and improve execution quality in real-time.",
+            },
+            {
+              title: "Goal Decomposition",
+              text: "Automatic breakdown of high-level business objectives into executable sub-goals with dependency-aware sequencing.",
+            },
+          ].map((item, i) => (
+            <FadeIn key={item.title} className="h-full">
+              <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12">
+                <span className="font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)] group-hover:text-accent-foreground/25">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-6 text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
+                  {item.title}
+                </h3>
+                <p className="mt-4 text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                  {item.text}
+                </p>
+              </article>
             </FadeIn>
-            <FadeIn delay={0.2}>
-              <div className="border border-border rounded-2xl p-8 bg-card/30 backdrop-blur-sm space-y-5">
-                {[
-                  {
-                    icon: Sparkles,
-                    title: "Chain-of-Thought Processing",
-                    text: "Structured reasoning chains that break complex problems into logical steps with explicit intermediate conclusions.",
-                  },
-                  {
-                    icon: BarChart3,
-                    title: "Self-Reflection & Correction",
-                    text: "Continuous evaluation loops that detect errors, reassess strategies, and improve execution quality in real-time.",
-                  },
-                  {
-                    icon: Workflow,
-                    title: "Goal Decomposition",
-                    text: "Automatic breakdown of high-level business objectives into executable sub-goals with dependency-aware sequencing.",
-                  },
-                ].map((item) => (
-                  <div key={item.title} className="flex gap-4 p-4 rounded-xl bg-primary/10 border border-primary/20 hover:border-primary/20 hover:bg-card/50 transition-all">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                      <item.icon className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h4 className="text-sm font-medium mb-1">{item.title}</h4>
-                      <p className="text-xs text-muted-foreground leading-relaxed">
-                        {item.text}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Cognitive Memory */}
-      <section id="memory" className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <FadeIn className="lg:order-2">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <Database className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-xs tracking-[0.2em] uppercase text-primary/80">
-                  Pillar 02
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-                Cognitive Memory
-                <br />
-                <span className="font-normal gradient-text">Systems</span>
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+      <section id="memory" className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="02">Pillar 02</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Cognitive Memory{" "}
+              <span className="text-accent">Systems</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="mt-8 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
                 Most AI systems have no persistent memory — every interaction
                 starts from zero. Adan Labs agents maintain rich cognitive
                 memory that spans sessions, retaining business context, learned
                 preferences, and accumulated domain knowledge.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
                 This means your agents get better over time. They remember past
                 decisions, understand your business processes deeply, and build
                 institutional knowledge that compounds with every workflow
                 executed.
               </p>
-            </FadeIn>
-            <FadeIn delay={0.2} className="lg:order-1">
-              <div className="space-y-4">
-                {[
-                  {
-                    layer: "Working Memory",
-                    description:
-                      "Active task context, intermediate results, and real-time execution state. The agent's immediate cognitive workspace.",
-                    capacity: "Active Session",
-                  },
-                  {
-                    layer: "Episodic Memory",
-                    description:
-                      "Records of past interactions, decisions, and outcomes. Enables pattern recognition and experience-based reasoning.",
-                    capacity: "Cross-Session",
-                  },
-                  {
-                    layer: "Semantic Memory",
-                    description:
-                      "Deep domain knowledge, business rules, organizational context, and learned relationships between concepts.",
-                    capacity: "Persistent",
-                  },
-                ].map((mem, i) => (
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Memory layers — hairline grid with progress bars */}
+        <div className="grid grid-cols-1 gap-px border-t-2 border-border bg-border md:grid-cols-3">
+          {[
+            {
+              layer: "Working Memory",
+              description:
+                "Active task context, intermediate results, and real-time execution state. The agent's immediate cognitive workspace.",
+              capacity: "Active Session",
+            },
+            {
+              layer: "Episodic Memory",
+              description:
+                "Records of past interactions, decisions, and outcomes. Enables pattern recognition and experience-based reasoning.",
+              capacity: "Cross-Session",
+            },
+            {
+              layer: "Semantic Memory",
+              description:
+                "Deep domain knowledge, business rules, organizational context, and learned relationships between concepts.",
+              capacity: "Persistent",
+            },
+          ].map((mem, i) => (
+            <FadeIn key={mem.layer} className="h-full">
+              <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12">
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
+                    {mem.layer}
+                  </h3>
+                  <span className="text-xs font-bold uppercase tracking-[0.25em] text-accent group-hover:text-accent-foreground">
+                    {mem.capacity}
+                  </span>
+                </div>
+                <p className="mt-4 flex-1 text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                  {mem.description}
+                </p>
+                <div className="mt-8 h-2 bg-border group-hover:bg-accent-foreground/20">
                   <div
-                    key={mem.layer}
-                    className="border border-border rounded-xl p-6 bg-card/30 backdrop-blur-sm hover:border-primary/20 hover:bg-card/50 transition-all"
-                  >
-                    <div className="flex items-center justify-between mb-3">
-                      <h4 className="text-sm font-medium">{mem.layer}</h4>
-                      <span className="text-[11px] font-mono tracking-wider text-muted-foreground">
-                        {mem.capacity}
-                      </span>
-                    </div>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {mem.description}
-                    </p>
-                    <div className="mt-4 h-1 rounded-full bg-border overflow-hidden">
-                      <div
-                        className="h-full bg-primary/20 rounded-full"
-                        style={{ width: `${100 - i * 25}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
+                    className="h-full bg-accent group-hover:bg-accent-foreground"
+                    style={{ width: `${100 - i * 25}%` }}
+                  />
+                </div>
+              </article>
             </FadeIn>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Multi-Agent Orchestration */}
-      <section id="orchestration" className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <FadeIn>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <Network className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-xs tracking-[0.2em] uppercase text-primary/80">
-                  Pillar 03
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-                Multi-Agent
-                <br />
-                <span className="font-normal gradient-text">Orchestration</span>
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+      <section id="orchestration" className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="03">Pillar 03</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Multi-Agent{" "}
+              <span className="text-accent">Orchestration</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="mt-8 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
                 Complex enterprise processes require more than a single agent.
                 Adan Labs deploys coordinated agent swarms where specialized
                 planners, executors, and validators collaborate in real-time.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
                 Each agent type brings distinct capabilities. Planner agents
                 decompose objectives. Executor agents carry out tasks with
                 domain expertise. Validator agents verify outputs. The
                 orchestration layer coordinates everything through structured
                 protocols with conflict resolution.
               </p>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Agent role cards — hairline grid, hover flood */}
+        <div className="grid grid-cols-1 gap-px border-t-2 border-border bg-border sm:grid-cols-2 md:grid-cols-3">
+          {[
+            { title: "Planner Agents", description: "Strategic decomposition and execution planning" },
+            { title: "Executor Agents", description: "Domain-specific task execution and tool use" },
+            { title: "Validator Agents", description: "Output verification and quality assurance" },
+            { title: "Coordinator Agents", description: "Workflow management and conflict resolution" },
+            { title: "Expert Agents", description: "Specialized domain knowledge and analysis" },
+            { title: "Monitor Agents", description: "Real-time observation and alerting" },
+          ].map((agent, i) => (
+            <FadeIn key={agent.title} className="h-full">
+              <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12">
+                <span className="font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)] group-hover:text-accent-foreground/25">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-6 text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
+                  {agent.title}
+                </h3>
+                <p className="mt-4 text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                  {agent.description}
+                </p>
+              </article>
             </FadeIn>
-            <FadeIn delay={0.2}>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { title: "Planner Agents", description: "Strategic decomposition and execution planning" },
-                  { title: "Executor Agents", description: "Domain-specific task execution and tool use" },
-                  { title: "Validator Agents", description: "Output verification and quality assurance" },
-                  { title: "Coordinator Agents", description: "Workflow management and conflict resolution" },
-                  { title: "Expert Agents", description: "Specialized domain knowledge and analysis" },
-                  { title: "Monitor Agents", description: "Real-time observation and alerting" },
-                ].map((agent) => (
-                  <div
-                    key={agent.title}
-                    className="border border-border rounded-xl p-5 bg-card/30 backdrop-blur-sm hover:border-primary/20 hover:bg-card/50 transition-all"
-                  >
-                    <h4 className="text-sm font-medium mb-2">{agent.title}</h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed">
-                      {agent.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Governance */}
-      <section id="governance" className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-            <div className="flex items-center justify-center gap-3 mb-8">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                <ShieldCheck className="w-5 h-5 text-primary" />
-              </div>
-              <span className="text-xs tracking-[0.2em] uppercase text-primary/80">
-                Governance Architecture
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-              Enterprise-grade trust
-              <br />
-              <span className="font-normal gradient-text">at every layer</span>
+      <section id="governance" className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="04">Governance Architecture</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Enterprise-grade trust{" "}
+              <span className="text-accent">at every layer</span>
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-xl">
               Governance is not an afterthought — it is woven into the
-              architecture. Every agent action passes through configurable policy
-              engines, role-based access controls, and audit systems that meet
-              the most demanding enterprise compliance requirements.
+              architecture. Every agent action passes through configurable
+              policy engines, role-based access controls, and audit systems
+              that meet the most demanding enterprise compliance requirements.
             </p>
           </FadeIn>
-          <FadeIn delay={0.2}>
-            <div className="grid sm:grid-cols-3 gap-6">
-              {[
-                {
-                  title: "Policy Engine",
-                  description:
-                    "Define granular rules for what agents can access, modify, and execute. Policies are version-controlled and testable.",
-                },
-                {
-                  title: "Audit & Compliance",
-                  description:
-                    "Every decision and data access is logged with full provenance. Generate compliance reports for SOC 2, GDPR, HIPAA, and more.",
-                },
-                {
-                  title: "Human-on-the-Loop",
-                  description:
-                    "Configure approval workflows for high-stakes decisions while routine tasks execute autonomously at machine speed.",
-                },
-              ].map((item) => (
-                <div
-                  key={item.title}
-                  className="border border-border rounded-xl p-8 bg-card/30 backdrop-blur-sm text-center hover:border-primary/20 hover:bg-card/50 transition-all"
-                >
-                  <h4 className="text-sm font-medium mb-3">{item.title}</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </FadeIn>
+        </div>
+
+        {/* Governance cards — hairline grid, hover flood */}
+        <div className="grid grid-cols-1 gap-px border-t-2 border-border bg-border sm:grid-cols-3">
+          {[
+            {
+              title: "Policy Engine",
+              description:
+                "Define granular rules for what agents can access, modify, and execute. Policies are version-controlled and testable.",
+            },
+            {
+              title: "Audit & Compliance",
+              description:
+                "Every decision and data access is logged with full provenance. Generate compliance reports for SOC 2, GDPR, HIPAA, and more.",
+            },
+            {
+              title: "Human-on-the-Loop",
+              description:
+                "Configure approval workflows for high-stakes decisions while routine tasks execute autonomously at machine speed.",
+            },
+          ].map((item, i) => (
+            <FadeIn key={item.title} className="h-full">
+              <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12">
+                <span className="font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)] group-hover:text-accent-foreground/25">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-6 text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
+                  {item.title}
+                </h3>
+                <p className="mt-4 text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                  {item.description}
+                </p>
+              </article>
+            </FadeIn>
+          ))}
         </div>
       </section>
 
       {/* MCP & Interoperability */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <FadeIn>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <Plug className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-xs tracking-[0.2em] uppercase text-primary/80">
-                  Interoperability
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-                MCP-Native Enterprise
-                <br />
-                <span className="font-normal gradient-text">Integration</span>
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="05">Interoperability</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              MCP-Native Enterprise{" "}
+              <span className="text-accent">Integration</span>
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <div className="mt-8 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
                 The Model Context Protocol (MCP) is the open standard for
                 connecting AI agents to enterprise tools. Adan Labs implements
                 MCP natively, enabling seamless integration with your existing
                 technology stack — no custom middleware required.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Whether your systems run on SAP, Salesforce, Google Cloud, Azure,
-                ServiceNow, or legacy on-premise infrastructure, Adan Labs
-                agents connect through standardized MCP interfaces with full
-                security and data governance.
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
+                Whether your systems run on SAP, Salesforce, Google Cloud,
+                Azure, ServiceNow, or legacy on-premise infrastructure, Adan
+                Labs agents connect through standardized MCP interfaces with
+                full security and data governance.
               </p>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <div className="border border-border rounded-2xl p-8 bg-card/30 backdrop-blur-sm">
-                <h4 className="text-[11px] font-mono tracking-[0.2em] text-muted-foreground uppercase mb-6">
-                  Supported Integrations
-                </h4>
-                <div className="grid grid-cols-2 gap-3">
-                  {[
-                    "SAP S/4HANA",
-                    "Salesforce",
-                    "Google Cloud",
-                    "Microsoft Azure",
-                    "ServiceNow",
-                    "Workday",
-                    "Oracle ERP",
-                    "Slack & Teams",
-                    "Jira & Confluence",
-                    "Custom REST APIs",
-                    "SFTP & Databases",
-                    "Legacy Systems",
-                  ].map((integration) => (
-                    <div
-                      key={integration}
-                      className="flex items-center gap-2 text-sm text-muted-foreground p-3 rounded-lg bg-primary/10 border border-primary/20 hover:border-primary/20 hover:bg-card/50 transition-all"
-                    >
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/30" />
-                      {integration}
-                    </div>
-                  ))}
-                </div>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* Supported integrations — hairline grid */}
+        <div className="grid grid-cols-2 gap-px border-t-2 border-border bg-border sm:grid-cols-3 lg:grid-cols-4">
+          {[
+            "SAP S/4HANA",
+            "Salesforce",
+            "Google Cloud",
+            "Microsoft Azure",
+            "ServiceNow",
+            "Workday",
+            "Oracle ERP",
+            "Slack & Teams",
+            "Jira & Confluence",
+            "Custom REST APIs",
+            "SFTP & Databases",
+            "Legacy Systems",
+          ].map((integration) => (
+            <FadeIn key={integration} className="h-full">
+              <div className="group flex h-full items-center gap-3 bg-background p-8 transition-colors duration-300 hover:bg-accent">
+                <span
+                  aria-hidden="true"
+                  className="font-bold text-accent group-hover:text-accent-foreground"
+                >
+                  /
+                </span>
+                <span className="text-sm font-bold uppercase tracking-tight text-foreground group-hover:text-accent-foreground">
+                  {integration}
+                </span>
               </div>
             </FadeIn>
-          </div>
+          ))}
         </div>
       </section>
 
       {/* How Agents Operate */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-              Workflow Lifecycle
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-              How Adan Labs agents
-              <br />
-              <span className="font-normal gradient-text">operate</span>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="06">Workflow Lifecycle</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              How Adan Labs agents{" "}
+              <span className="text-accent">operate</span>
             </h2>
-            <p className="text-muted-foreground leading-relaxed">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-xl">
               From objective intake to outcome delivery, every step is
               autonomous, auditable, and governed.
             </p>
           </FadeIn>
+        </div>
 
-          <div className="max-w-3xl mx-auto space-y-4">
-            {steps.map((step, i) => (
-              <FadeIn key={step.number} delay={i * 0.08}>
-                <div className="flex gap-6 p-6 border border-border rounded-xl bg-card/30 backdrop-blur-sm hover:border-primary/20 hover:bg-card/50 transition-all">
-                  <span className="font-mono text-2xl font-light text-foreground/20 shrink-0 w-10">
-                    {step.number}
-                  </span>
-                  <div>
-                    <h4 className="text-sm font-medium mb-2">{step.title}</h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+        {/* Workflow steps — hairline grid, hover flood */}
+        <div className="grid grid-cols-1 gap-px border-t-2 border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+          {steps.map((step) => (
+            <FadeIn key={step.number} className="h-full">
+              <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12">
+                <span className="font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)] group-hover:text-accent-foreground/25">
+                  {step.number}
+                </span>
+                <h3 className="mt-6 text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
+                  {step.title}
+                </h3>
+                <p className="mt-4 text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                  {step.description}
+                </p>
+              </article>
+            </FadeIn>
+          ))}
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-              FAQ
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">
-              Frequently asked
-              <br />
-              <span className="font-normal gradient-text">questions</span>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="07">FAQ</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Frequently asked{" "}
+              <span className="text-accent">questions</span>
             </h2>
           </FadeIn>
 
-          <div className="max-w-3xl mx-auto space-y-3">
+          <div className="mt-16 flex max-w-4xl flex-col gap-4 md:mt-24">
             {faqItems.map((item) => (
               <FadeIn key={item.q}>
                 <FAQItem q={item.q} a={item.a} />
@@ -529,30 +516,42 @@ export function TechnologyContent() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-              Explore what agentic AI
-              <br />
-              <span className="font-normal gradient-text">can do for your enterprise</span>
+      <section className="border-b-2 border-border bg-accent text-accent-foreground">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-40">
+          <FadeIn>
+            <div className="flex items-center gap-3">
+              <span
+                aria-hidden="true"
+                className="h-px w-10 bg-accent-foreground"
+              />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] md:text-sm">
+                Technical Demo
+              </span>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[18ch] font-bold uppercase leading-[0.82] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Explore what agentic AI can do for your enterprise
             </h2>
-            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-10 max-w-xl text-lg font-medium leading-tight md:text-2xl">
               Schedule a technical deep-dive with our architecture team to
               evaluate Adan Labs for your specific use cases.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-medium px-8 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+                className="inline-flex h-16 items-center justify-center gap-3 rounded-none border-2 border-accent-foreground bg-accent-foreground px-10 text-base font-bold uppercase tracking-tighter text-accent transition-transform duration-200 hover:scale-105 active:scale-95 md:h-20 md:px-12 md:text-lg"
               >
                 Request a Technical Demo
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-5 w-5" />
               </Link>
               <Link
                 href="/solutions"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground px-8 py-3.5 border border-border rounded-full hover:border-primary/30 transition-colors"
+                className="inline-flex h-16 items-center justify-center gap-3 rounded-none border-2 border-accent-foreground bg-transparent px-10 text-base font-bold uppercase tracking-tighter text-accent-foreground transition-colors hover:bg-accent-foreground hover:text-accent active:scale-95 md:h-20 md:px-12 md:text-lg"
               >
                 View Solutions
               </Link>

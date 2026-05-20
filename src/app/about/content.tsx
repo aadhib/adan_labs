@@ -1,6 +1,7 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
+import { SectionLabel } from "@/components/ui/section-label";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -41,20 +42,19 @@ export function AboutContent() {
   return (
     <>
       {/* Page Hero */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-cosmic pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="max-w-3xl">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-              About Adan Labs
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight mb-6">
-              Building the infrastructure
-              <br />
-              <span className="font-normal gradient-text">for autonomous enterprise</span>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 pt-40 pb-24 md:px-12 md:pt-52 md:pb-32">
+          <FadeIn>
+            <SectionLabel>About Adan Labs</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h1 className="mt-8 max-w-[15ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,8vw,8rem)]">
+              Building the infrastructure for{" "}
+              <span className="text-accent">autonomous enterprise</span>
             </h1>
-            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-2xl">
               Adan Labs is an advanced AI company building Agentic Assist
               Technologies — the systems that will power the digital autonomous
               workforce of tomorrow.
@@ -64,69 +64,85 @@ export function AboutContent() {
       </section>
 
       {/* Who We Are */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16">
-            <FadeIn>
-              <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-                Who We Are
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-                Not another
-                <br />
-                <span className="font-normal gradient-text">chatbot company</span>
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Adan Labs was founded on a conviction: the next era of AI is
-                not about generating content — it is about autonomous execution.
-                We are building AI systems that reason through complex problems,
-                plan multi-step solutions, execute across enterprise systems, and
-                learn from outcomes.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Our focus is not on building another assistant. We are building
-                the infrastructure for a digital autonomous workforce — AI
-                agents that operate alongside human teams, handling the complex,
-                multi-step processes that drive real business outcomes.
-              </p>
-            </FadeIn>
-            <FadeIn delay={0.2}>
-              <div className="space-y-6">
-                {[
-                  { metric: "Reasoning-First", description: "Every agent action begins with structured reasoning and transparent decision-making." },
-                  { metric: "Enterprise-Grade", description: "Built for the security, compliance, and scale requirements of large organizations." },
-                  { metric: "Outcome-Driven", description: "Deployments are measured by business impact, not by AI metrics." },
-                ].map((item) => (
-                  <div key={item.metric} className="border border-border rounded-xl p-6 bg-card/30 backdrop-blur-sm hover:border-primary/20 hover:bg-card/50 transition-all">
-                    <h4 className="text-lg font-normal tracking-tight mb-2">
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="01">Who We Are</SectionLabel>
+          </FadeIn>
+          <div className="mt-8 grid gap-16 lg:grid-cols-2">
+            <div>
+              <FadeIn delay={0.05}>
+                <h2 className="max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+                  Not another <span className="text-accent">chatbot company</span>
+                </h2>
+              </FadeIn>
+              <FadeIn delay={0.1}>
+                <p className="mt-8 text-lg leading-tight text-muted-foreground md:text-xl">
+                  Adan Labs was founded on a conviction: the next era of AI is
+                  not about generating content — it is about autonomous execution.
+                  We are building AI systems that reason through complex problems,
+                  plan multi-step solutions, execute across enterprise systems, and
+                  learn from outcomes.
+                </p>
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <p className="mt-6 text-lg leading-tight text-muted-foreground md:text-xl">
+                  Our focus is not on building another assistant. We are building
+                  the infrastructure for a digital autonomous workforce — AI
+                  agents that operate alongside human teams, handling the complex,
+                  multi-step processes that drive real business outcomes.
+                </p>
+              </FadeIn>
+            </div>
+            <div className="grid grid-cols-1 gap-px border-2 border-border bg-border">
+              {[
+                {
+                  metric: "Reasoning-First",
+                  description:
+                    "Every agent action begins with structured reasoning and transparent decision-making.",
+                },
+                {
+                  metric: "Enterprise-Grade",
+                  description:
+                    "Built for the security, compliance, and scale requirements of large organizations.",
+                },
+                {
+                  metric: "Outcome-Driven",
+                  description:
+                    "Deployments are measured by business impact, not by AI metrics.",
+                },
+              ].map((item) => (
+                <FadeIn key={item.metric} className="h-full">
+                  <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent">
+                    <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
                       {item.metric}
-                    </h4>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
+                    </h3>
+                    <p className="mt-4 text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
                       {item.description}
                     </p>
-                  </div>
-                ))}
-              </div>
-            </FadeIn>
+                  </article>
+                </FadeIn>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
       {/* Mission */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="text-center max-w-4xl mx-auto">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-8">
-              Our Mission
-            </span>
-            <blockquote className="text-2xl sm:text-3xl lg:text-4xl font-light tracking-tight leading-snug mb-8 border-l-2 border-primary/40 pl-6 text-left">
-              &ldquo;To build enterprise AI systems that don&rsquo;t just assist
-              — but reason, plan, and act with the autonomy and accountability
-              that real business outcomes demand.&rdquo;
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="02">Our Mission</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <blockquote className="mt-8 max-w-[24ch] border-l-4 border-accent pl-8 font-bold uppercase leading-[0.95] tracking-tighter text-[clamp(2rem,5vw,4.5rem)]">
+              To build enterprise AI systems that don&rsquo;t just assist — but
+              reason, plan, and act with the autonomy and accountability that
+              real business outcomes demand.
             </blockquote>
-            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed max-w-2xl mx-auto">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-12 max-w-2xl text-lg leading-tight text-muted-foreground md:text-xl">
               We believe every enterprise deserves AI that works as hard as its
               people — and we are building the technology to make that possible.
             </p>
@@ -135,142 +151,170 @@ export function AboutContent() {
       </section>
 
       {/* Why Now */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <FadeIn>
-              <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-                Why Now
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-                The convergence that makes
-                <br />
-                <span className="font-normal gradient-text">agentic AI possible</span>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="03">Why Now</SectionLabel>
+          </FadeIn>
+          <div className="mt-8 grid gap-16 lg:grid-cols-2 lg:items-start">
+            <FadeIn delay={0.05}>
+              <h2 className="max-w-[16ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+                The convergence that makes{" "}
+                <span className="text-accent">agentic AI possible</span>
               </h2>
             </FadeIn>
-            <FadeIn delay={0.1}>
-              <div className="space-y-6">
-                <p className="text-muted-foreground leading-relaxed">
+            <div className="space-y-6">
+              <FadeIn delay={0.1}>
+                <p className="text-lg leading-tight text-muted-foreground md:text-xl">
                   Three technological advances have converged to make truly
                   autonomous enterprise AI possible for the first time.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground font-medium">Reasoning maturity.</strong>{" "}
+              </FadeIn>
+              <FadeIn delay={0.15}>
+                <p className="text-lg leading-tight text-muted-foreground md:text-xl">
+                  <strong className="font-bold uppercase tracking-tighter text-foreground">
+                    Reasoning maturity.
+                  </strong>{" "}
                   Advances in chain-of-thought processing and self-reflection
                   have given AI agents the ability to handle genuinely complex,
                   multi-step problems — not just pattern matching.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground font-medium">Memory architectures.</strong>{" "}
+              </FadeIn>
+              <FadeIn delay={0.2}>
+                <p className="text-lg leading-tight text-muted-foreground md:text-xl">
+                  <strong className="font-bold uppercase tracking-tighter text-foreground">
+                    Memory architectures.
+                  </strong>{" "}
                   Cognitive memory systems now allow agents to retain context
                   across sessions, learn from experience, and build institutional
                   knowledge — transforming tools into partners.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  <strong className="text-foreground font-medium">Integration standards.</strong>{" "}
+              </FadeIn>
+              <FadeIn delay={0.25}>
+                <p className="text-lg leading-tight text-muted-foreground md:text-xl">
+                  <strong className="font-bold uppercase tracking-tighter text-foreground">
+                    Integration standards.
+                  </strong>{" "}
                   The Model Context Protocol (MCP) and similar standards are
                   making it practical to connect AI agents to enterprise systems
                   at scale — breaking the integration barrier that has limited AI
                   impact.
                 </p>
-              </div>
-            </FadeIn>
+              </FadeIn>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto mb-16">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-              Design Philosophy
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight">
-              Principles that guide
-              <br />
-              <span className="font-normal gradient-text">everything we build</span>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 pt-24 md:px-12 md:pt-32">
+          <FadeIn>
+            <SectionLabel index="04">Design Philosophy</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[16ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Principles that guide{" "}
+              <span className="text-accent">everything we build</span>
             </h2>
           </FadeIn>
+        </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {values.map((value, i) => (
-              <FadeIn key={value.title} delay={i * 0.08}>
-                <div className="border border-border rounded-xl p-8 bg-card/30 backdrop-blur-sm hover:border-primary/20 hover:bg-card/50 transition-all h-full">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-md bg-primary/10 border border-primary/20 text-xs text-primary font-medium mb-4">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <h3 className="text-sm font-medium tracking-tight mb-3">
-                    {value.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+        {/* Value cards — hairline grid, hover flood */}
+        <div className="mt-16 grid grid-cols-1 gap-px border-t-2 border-border bg-border md:mt-24 sm:grid-cols-2 lg:grid-cols-3">
+          {values.map((value, i) => (
+            <FadeIn key={value.title} className="h-full">
+              <article className="group flex h-full flex-col bg-background p-8 transition-colors duration-300 hover:bg-accent md:p-12">
+                <span
+                  aria-hidden="true"
+                  className="font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)] group-hover:text-accent-foreground/25"
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="mt-6 text-2xl font-bold uppercase tracking-tighter text-foreground group-hover:text-accent-foreground md:text-3xl">
+                  {value.title}
+                </h3>
+                <p className="mt-4 text-lg leading-tight text-muted-foreground group-hover:text-accent-foreground/80">
+                  {value.description}
+                </p>
+              </article>
+            </FadeIn>
+          ))}
         </div>
       </section>
 
       {/* Future Vision */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="max-w-3xl mx-auto text-center">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-              The Future
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-8">
-              Where we are going
-            </h2>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              We envision a future where every enterprise operates with a digital
-              autonomous workforce — AI agents that handle the operational
-              complexity of running a business while human teams focus on
-              strategy, creativity, and the work that only humans can do.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              This is not about replacing people. It is about amplifying human
-              capability by delegating the complex, repetitive, multi-system
-              processes that consume the majority of operational effort today.
-            </p>
-            <p className="text-muted-foreground leading-relaxed">
-              Adan Labs is building the infrastructure that makes this vision
-              real — one reasoning-first agent, one cognitive memory system, and
-              one orchestrated workflow at a time.
-            </p>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
+          <FadeIn>
+            <SectionLabel index="05">The Future</SectionLabel>
           </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              Where we are <span className="text-accent">going</span>
+            </h2>
+          </FadeIn>
+          <div className="mt-8 max-w-2xl space-y-6">
+            <FadeIn delay={0.1}>
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
+                We envision a future where every enterprise operates with a digital
+                autonomous workforce — AI agents that handle the operational
+                complexity of running a business while human teams focus on
+                strategy, creativity, and the work that only humans can do.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.15}>
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
+                This is not about replacing people. It is about amplifying human
+                capability by delegating the complex, repetitive, multi-system
+                processes that consume the majority of operational effort today.
+              </p>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="text-lg leading-tight text-muted-foreground md:text-xl">
+                Adan Labs is building the infrastructure that makes this vision
+                real — one reasoning-first agent, one cognitive memory system, and
+                one orchestrated workflow at a time.
+              </p>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow-alt pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-              Join us in building
-              <br />
-              <span className="font-normal gradient-text">the autonomous enterprise</span>
+      <section className="border-b-2 border-border bg-accent text-accent-foreground">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-40">
+          <FadeIn>
+            <div className="flex items-center gap-3">
+              <span aria-hidden="true" className="h-px w-10 bg-accent-foreground" />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] md:text-sm">
+                Join Us
+              </span>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[15ch] font-bold uppercase leading-[0.82] tracking-tighter text-[clamp(3rem,10vw,11rem)]">
+              Join us in building the autonomous enterprise
             </h2>
-            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-10 max-w-xl text-lg font-medium leading-tight md:text-2xl">
               Whether you are an enterprise leader, a technology partner, or a
               builder who shares our vision — we would like to hear from you.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-medium px-8 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+                className="inline-flex h-16 items-center justify-center gap-3 rounded-none border-2 border-accent-foreground bg-accent-foreground px-10 text-base font-bold uppercase tracking-tighter text-accent transition-transform duration-200 hover:scale-105 active:scale-95 md:h-20 md:px-12 md:text-lg"
               >
                 Get in Touch
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-5 w-5" />
               </Link>
               <Link
                 href="/insights"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground px-8 py-3.5 border border-border rounded-full transition-colors"
+                className="inline-flex h-16 items-center justify-center gap-3 rounded-none border-2 border-accent-foreground bg-transparent px-10 text-base font-bold uppercase tracking-tighter text-accent-foreground transition-colors hover:bg-accent-foreground hover:text-accent active:scale-95 md:h-20 md:px-12 md:text-lg"
               >
                 Read Our Insights
               </Link>

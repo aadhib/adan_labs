@@ -1,42 +1,46 @@
 "use client";
 
-import { FadeIn } from "@/components/ui/fade-in";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import { FadeIn } from "@/components/ui/fade-in";
+
 export function CTABanner() {
   return (
-    <section className="relative py-24 lg:py-32 overflow-hidden">
-      <div className="absolute inset-0 bg-cosmic pointer-events-none" />
-      <div className="absolute inset-0 bg-dots opacity-20" />
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <FadeIn className="text-center max-w-3xl mx-auto">
-          <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-4">
-            Get Started
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light tracking-tight mb-6">
-            Ready to give your
-            <br />
-            <span className="font-normal gradient-text">
-              business agency?
+    <section className="border-b-2 border-border bg-accent text-accent-foreground">
+      <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-40">
+        <FadeIn>
+          <div className="flex items-center gap-3">
+            <span aria-hidden="true" className="h-px w-10 bg-accent-foreground" />
+            <span className="text-xs font-bold uppercase tracking-[0.25em] md:text-sm">
+              Get Started
             </span>
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.05}>
+          <h2 className="mt-8 max-w-[15ch] font-bold uppercase leading-[0.82] tracking-tighter text-[clamp(3rem,10vw,11rem)]">
+            Ready to give your business agency?
           </h2>
-          <p className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <p className="mt-10 max-w-xl text-lg font-medium leading-tight md:text-2xl">
             Schedule a strategy call with our team to explore how Adan Labs
             Agentic Assist Technologies can transform your enterprise
             operations.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        </FadeIn>
+        <FadeIn delay={0.15}>
+          <div className="mt-12 flex flex-col gap-4 sm:flex-row">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 text-sm font-medium px-8 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+              className="inline-flex h-16 items-center justify-center gap-3 rounded-none border-2 border-accent-foreground bg-accent-foreground px-10 text-base font-bold uppercase tracking-tighter text-accent transition-transform duration-200 hover:scale-105 active:scale-95 md:h-20 md:px-12 md:text-lg"
             >
               Book a Strategy Call
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               href="/solutions"
-              className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground px-8 py-3.5 border border-border rounded-full hover:border-primary/30 transition-colors"
+              className="inline-flex h-16 items-center justify-center gap-3 rounded-none border-2 border-accent-foreground bg-transparent px-10 text-base font-bold uppercase tracking-tighter text-accent-foreground transition-colors hover:bg-accent-foreground hover:text-accent active:scale-95 md:h-20 md:px-12 md:text-lg"
             >
               View Solutions
             </Link>

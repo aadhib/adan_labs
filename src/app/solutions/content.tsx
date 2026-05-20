@@ -1,21 +1,14 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/fade-in";
+import { SectionLabel } from "@/components/ui/section-label";
+import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
-import {
-  ArrowRight,
-  Truck,
-  Headphones,
-  Calculator,
-  Monitor,
-  Scale,
-  Cog,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const solutions = [
   {
     id: "operations",
-    icon: Truck,
     label: "Operations",
     title: "Operations & Supply Chain",
     problem:
@@ -38,7 +31,6 @@ const solutions = [
   },
   {
     id: "customer-support",
-    icon: Headphones,
     label: "Support",
     title: "Customer Support Automation",
     problem:
@@ -61,7 +53,6 @@ const solutions = [
   },
   {
     id: "finance",
-    icon: Calculator,
     label: "Finance",
     title: "Finance & Back Office",
     problem:
@@ -84,7 +75,6 @@ const solutions = [
   },
   {
     id: "it",
-    icon: Monitor,
     label: "IT Systems",
     title: "IT & Internal Knowledge Systems",
     problem:
@@ -107,7 +97,6 @@ const solutions = [
   },
   {
     id: "legal",
-    icon: Scale,
     label: "Legal",
     title: "Legal & Compliance Workflows",
     problem:
@@ -130,7 +119,6 @@ const solutions = [
   },
   {
     id: "enterprise",
-    icon: Cog,
     label: "Enterprise",
     title: "Enterprise Process Automation",
     problem:
@@ -157,20 +145,19 @@ export function SolutionsContent() {
   return (
     <>
       {/* Page Hero */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-        <div className="absolute inset-0 bg-cosmic pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-transparent to-background" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="max-w-3xl">
-            <span className="text-xs tracking-[0.2em] uppercase text-primary/80 block mb-6">
-              Solutions
-            </span>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight mb-6">
-              Agentic AI for
-              <br />
-              <span className="font-normal gradient-text">every enterprise function</span>
+      <section className="border-b-2 border-border">
+        <div className="mx-auto w-full max-w-[1760px] px-6 pt-40 pb-24 md:px-12 md:pt-52 md:pb-32">
+          <FadeIn>
+            <SectionLabel>Solutions</SectionLabel>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h1 className="mt-8 max-w-[14ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,8vw,8rem)]">
+              Agentic AI for{" "}
+              <span className="text-accent">every enterprise function</span>
             </h1>
-            <p className="text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-8 max-w-2xl text-lg leading-tight text-muted-foreground md:text-2xl">
               From operations to finance to customer support — Adan Labs agents
               deliver autonomous execution with real, measurable business
               outcomes across your entire organization.
@@ -181,83 +168,86 @@ export function SolutionsContent() {
 
       {/* Solutions */}
       {solutions.map((sol, idx) => (
-        <section
-          key={sol.id}
-          id={sol.id}
-          className="relative py-24 lg:py-32 overflow-hidden"
-        >
-          <div className={`absolute inset-0 ${idx % 2 === 0 ? 'bg-section-glow' : 'bg-section-glow-alt'} pointer-events-none`} />
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+        <section key={sol.id} id={sol.id} className="border-b-2 border-border">
+          <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-32">
             <FadeIn>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
-                  <sol.icon className="w-5 h-5 text-primary" />
-                </div>
-                <span className="text-xs tracking-[0.2em] uppercase text-primary/80">
+              <div className="flex items-center justify-between gap-6">
+                <SectionLabel index={String(idx + 1).padStart(2, "0")}>
                   {sol.label}
-                </span>
-                <span className="font-mono text-[10px] tracking-wider text-muted-foreground/60 ml-auto">
-                  {String(idx + 1).padStart(2, "0")} / {String(solutions.length).padStart(2, "0")}
+                </SectionLabel>
+                <span
+                  aria-hidden="true"
+                  className="font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)]"
+                >
+                  {String(idx + 1).padStart(2, "0")}
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-12">
-                <span className="gradient-text">{sol.title}</span>
+            </FadeIn>
+            <FadeIn delay={0.05}>
+              <h2 className="mt-8 max-w-[16ch] font-bold uppercase leading-[0.85] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+                {sol.title}
               </h2>
             </FadeIn>
 
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
-              <div className="space-y-8">
-                <FadeIn delay={0.1}>
+            <div className="mt-16 grid grid-cols-1 gap-px border-t-2 border-border bg-border lg:mt-24 lg:grid-cols-2">
+              <FadeIn className="h-full">
+                <div className="flex h-full flex-col gap-10 bg-background p-8 md:p-12">
                   <div>
-                    <h3 className="text-xs tracking-[0.2em] uppercase text-primary/80 mb-4">
-                      The Problem
+                    <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground md:text-4xl">
+                      The <span className="text-accent">Problem</span>
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="mt-4 text-lg leading-tight text-muted-foreground">
                       {sol.problem}
                     </p>
                   </div>
-                </FadeIn>
-                <FadeIn delay={0.2}>
                   <div>
-                    <h3 className="text-xs tracking-[0.2em] uppercase text-primary/80 mb-4">
-                      The Agentic Solution
+                    <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground md:text-4xl">
+                      The Agentic{" "}
+                      <span className="text-accent">Solution</span>
                     </h3>
-                    <p className="text-muted-foreground leading-relaxed">
+                    <p className="mt-4 text-lg leading-tight text-muted-foreground">
                       {sol.solution}
                     </p>
                   </div>
-                </FadeIn>
-                <FadeIn delay={0.3}>
                   <div>
-                    <h3 className="text-xs tracking-[0.2em] uppercase text-primary/80 mb-4">
-                      Business Outcomes
+                    <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground md:text-4xl">
+                      Business <span className="text-accent">Outcomes</span>
                     </h3>
-                    <ul className="space-y-3">
+                    <ul className="mt-6 grid grid-cols-1">
                       {sol.outcomes.map((outcome) => (
-                        <li key={outcome} className="flex items-start gap-3">
-                          <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0" />
-                          <span className="text-sm text-foreground/80">
-                            {outcome}
+                        <li
+                          key={outcome}
+                          className="flex items-start gap-3 border-t-2 border-border py-4 text-sm font-bold uppercase tracking-tight text-foreground"
+                        >
+                          <span aria-hidden="true" className="text-accent">
+                            /
                           </span>
+                          {outcome}
                         </li>
                       ))}
                     </ul>
                   </div>
-                </FadeIn>
-              </div>
+                </div>
+              </FadeIn>
 
-              <FadeIn delay={0.2}>
-                <div className="border border-border rounded-2xl p-8 bg-card/30 backdrop-blur-sm hover:border-primary/20 hover:bg-card/50 transition-all h-full">
-                  <h3 className="text-xs tracking-[0.2em] uppercase text-primary/80 mb-6">
-                    Sample Workflow
+              <FadeIn className="h-full">
+                <div className="flex h-full flex-col bg-background p-8 md:p-12">
+                  <h3 className="text-2xl font-bold uppercase tracking-tighter text-foreground md:text-4xl">
+                    Sample <span className="text-accent">Workflow</span>
                   </h3>
-                  <div className="space-y-4">
+                  <div className="mt-8 flex flex-col">
                     {sol.workflow.map((step, i) => (
-                      <div key={i} className="flex gap-4">
-                        <span className="font-mono text-lg font-light text-foreground/15 shrink-0 w-7">
+                      <div
+                        key={i}
+                        className="flex items-baseline gap-6 border-t-2 border-border py-6"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="shrink-0 font-bold leading-none tracking-tighter text-muted text-[clamp(3rem,6vw,5rem)]"
+                        >
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <p className="text-sm text-muted-foreground leading-relaxed pt-1">
+                        <p className="text-lg leading-tight text-muted-foreground">
                           {step}
                         </p>
                       </div>
@@ -271,31 +261,43 @@ export function SolutionsContent() {
       ))}
 
       {/* CTA */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-section-glow pointer-events-none" />
-        <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-          <FadeIn className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl font-light tracking-tight mb-6">
-              See how agentic AI applies
-              <br />
-              <span className="font-normal gradient-text">to your specific workflows</span>
+      <section className="border-b-2 border-border bg-accent text-accent-foreground">
+        <div className="mx-auto w-full max-w-[1760px] px-6 py-24 md:px-12 md:py-40">
+          <FadeIn>
+            <div className="flex items-center gap-3">
+              <span
+                aria-hidden="true"
+                className="h-px w-10 bg-accent-foreground"
+              />
+              <span className="text-xs font-bold uppercase tracking-[0.25em] md:text-sm">
+                Custom Assessment
+              </span>
+            </div>
+          </FadeIn>
+          <FadeIn delay={0.05}>
+            <h2 className="mt-8 max-w-[18ch] font-bold uppercase leading-[0.82] tracking-tighter text-[clamp(2.5rem,7vw,6.5rem)]">
+              See how agentic AI applies to your specific workflows
             </h2>
-            <p className="text-muted-foreground text-base lg:text-lg leading-relaxed mb-10 max-w-xl mx-auto">
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <p className="mt-10 max-w-xl text-lg font-medium leading-tight md:text-2xl">
               Every enterprise is unique. Let our team map Adan Labs
               capabilities to your specific processes and quantify the potential
               impact.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          </FadeIn>
+          <FadeIn delay={0.15}>
+            <div className="mt-12 flex flex-col gap-4 sm:flex-row">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 text-sm font-medium px-8 py-3.5 bg-primary text-primary-foreground rounded-full hover:bg-primary/90 transition-colors"
+                className="inline-flex h-16 items-center justify-center gap-3 rounded-none border-2 border-accent-foreground bg-accent-foreground px-10 text-base font-bold uppercase tracking-tighter text-accent transition-transform duration-200 hover:scale-105 active:scale-95 md:h-20 md:px-12 md:text-lg"
               >
                 Request a Custom Assessment
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="h-5 w-5" />
               </Link>
               <Link
                 href="/technology"
-                className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground px-8 py-3.5 border border-border rounded-full hover:border-primary/30 transition-colors"
+                className="inline-flex h-16 items-center justify-center gap-3 rounded-none border-2 border-accent-foreground bg-transparent px-10 text-base font-bold uppercase tracking-tighter text-accent-foreground transition-colors hover:bg-accent-foreground hover:text-accent active:scale-95 md:h-20 md:px-12 md:text-lg"
               >
                 Explore Technology
               </Link>
