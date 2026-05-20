@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
+import { LogoMark } from "@/components/ui/logo";
+
 const footerLinks = {
   Company: [
     { href: "/about", label: "About" },
@@ -29,9 +31,7 @@ export function Footer() {
         {/* Brand */}
         <div className="flex flex-col gap-6 border-b-2 border-border p-8 md:border-r-2 lg:border-b-0 lg:p-12">
           <Link href="/" className="flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center bg-accent text-lg font-bold text-accent-foreground">
-              A
-            </span>
+            <LogoMark className="h-10 w-10 text-accent" />
             <span className="text-base font-bold uppercase tracking-tighter">
               Adan Labs
             </span>

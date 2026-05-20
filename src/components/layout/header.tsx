@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 import { buttonVariants } from "@/components/ui/button";
+import { LogoMark } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -28,10 +29,8 @@ export function Header() {
     <header className="fixed inset-x-0 top-0 z-50 h-20 border-b-2 border-border bg-background">
       <nav className="flex h-full items-center justify-between pl-4 pr-4 md:pr-0">
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group">
-          <span className="flex h-10 w-10 items-center justify-center bg-accent text-lg font-bold text-accent-foreground transition-transform duration-200 group-hover:scale-105">
-            A
-          </span>
+        <Link href="/" className="group flex items-center gap-3">
+          <LogoMark className="h-10 w-10 text-accent transition-transform duration-200 group-hover:scale-105" />
           <span className="text-base font-bold uppercase tracking-tighter">
             Adan Labs
           </span>
